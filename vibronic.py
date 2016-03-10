@@ -2,10 +2,17 @@ import numpy, pylab, scipy.optimize
 
 raw_accel = []
 
-f=open("tummy.plist", "r")
+f=open("BARF.plist", "r")
 for line in f:
     if "<real>" in line:
         raw_accel.append(float(line[7:-9]))
+
+pylab.plot(raw_accel, 'o-')
+pylab.show()
+exit()
+
+
+
 
 accel = raw_accel[125:145]
 times = numpy.arange(0,2,0.1)
@@ -28,8 +35,8 @@ print result
 
 
 pylab.plot(times, accel, 'ko-')
-pylab.plot(hd_times, wave(hd_times, guess[0], guess[1], guess[2], guess[3]), "b-")
-pylab.plot(hd_times, wave(hd_times, result[0], result[1], result[2], guess[3]), "r-")
+# pylab.plot(hd_times, wave(hd_times, guess[0], guess[1], guess[2], guess[3]), "b-")
+# pylab.plot(hd_times, wave(hd_times, result[0], result[1], result[2], guess[3]), "r-")
 pylab.show()
 
 
